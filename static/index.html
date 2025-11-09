@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Generator - Powered by Claude Sonnet 4.5</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🚀</span>
+                    <h1>AI Code Generator</h1>
+                </div>
+                <div class="header-info">
+                    <span class="badge">Claude Sonnet 4.5</span>
+                    <span class="badge badge-success" id="connection-status">Connected</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Quick Examples</h3>
+                    <div class="example-buttons">
+                        <button class="example-btn" data-prompt="Generate a Python REST API with FastAPI">
+                            FastAPI REST API
+                        </button>
+                        <button class="example-btn" data-prompt="Create a React component for a todo list">
+                            React Todo Component
+                        </button>
+                        <button class="example-btn" data-prompt="Build a Python class for database connections">
+                            Database Connection Class
+                        </button>
+                        <button class="example-btn" data-prompt="Generate a FastAPI web application with authentication">
+                            FastAPI with Auth
+                        </button>
+                        <button class="example-btn" data-prompt="Create a Python script for data processing">
+                            Data Processing Script
+                        </button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Tools</h3>
+                    <button class="btn-secondary" id="show-tools-btn">View All Tools</button>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Session</h3>
+                    <div class="session-info">
+                        <p><strong>Session ID:</strong></p>
+                        <code class="session-id" id="session-id-display">Not started</code>
+                        <button class="btn-secondary btn-small" id="new-session-btn">New Session</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <div class="chat-container">
+                <!-- Messages Area -->
+                <div class="messages-area" id="messages-area">
+                    <div class="welcome-message">
+                        <div class="welcome-icon">✨</div>
+                        <h2>Welcome to AI Code Generator</h2>
+                        <p>Describe what code you'd like to generate, and I'll create it for you!</p>
+                        <div class="welcome-features">
+                            <div class="feature">
+                                <span class="feature-icon">💻</span>
+                                <span>Generate complete projects</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">📁</span>
+                                <span>Create multiple files</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🔧</span>
+                                <span>Use powerful tools</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-area">
+                    <div class="input-container">
+                        <textarea 
+                            id="prompt-input" 
+                            placeholder="Describe what code you'd like to generate... (e.g., 'Create a Python REST API with FastAPI')"
+                            rows="3"
+                        ></textarea>
+                        <button id="send-btn" class="send-button" title="Send (Enter)">
+                            <span class="send-icon">➤</span>
+                        </button>
+                    </div>
+                    <div class="input-footer">
+                        <span class="hint">Press <kbd>Enter</kbd> to send, <kbd>Shift+Enter</kbd> for new line</span>
+                        <span class="status" id="status-text"></span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Tools Modal -->
+    <div class="modal" id="tools-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🔧 Available Tools</h2>
+                <button class="modal-close" id="close-tools-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="tools-list">
+                <div class="loading">Loading tools...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
+
